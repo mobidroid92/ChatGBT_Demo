@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">ChatGBT Example</string>
+    <string name="enter_msg_hint">Enter Message…</string>
+    <string name="send">Send</string>
+    <string name="error">Error</string>
+</resources>
