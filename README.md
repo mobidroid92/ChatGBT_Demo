@@ -13,7 +13,7 @@ This Android app shows a demo of a chat with ChatGPT.
 * Coil
 * View Binding
 * MVVM
-
+* Clean Architecture
 
 ![](chat_gpt_demo.gif)
 
