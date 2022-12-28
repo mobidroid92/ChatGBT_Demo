@@ -22,7 +22,7 @@ object AppProvidesModule {
     fun provideHttpClient(): HttpClient {
         return HttpClient(CIO) {
             defaultRequest {
-                url("https://api.openai.com/v1/")
+                url(BuildConfig.BASE_URL)
                 header("Authorization", "Bearer ${BuildConfig.OPEN_AI_KEY}")
             }
             install(ContentNegotiation) {

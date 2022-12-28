@@ -1,25 +1,16 @@
 package com.example.chatgbtexample.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.widget.doOnTextChanged
-import androidx.lifecycle.SavedStateViewModelFactory
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.chatgbtexample.R
+import com.example.chatgbtexample.common.base.BaseActivity
 import com.example.chatgbtexample.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
-
-    private var _binding: ActivityMainBinding? = null
-    private val binding: ActivityMainBinding get() = _binding!!
+class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private val viewModel: MainActivityViewModel by viewModels()
 
@@ -27,8 +18,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
         setupViews()
         listeners()
@@ -73,11 +62,6 @@ class MainActivity : AppCompatActivity() {
                 binding.sendMsgBtn.isEnabled = it
             }
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 
 }

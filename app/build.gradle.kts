@@ -25,6 +25,7 @@ android {
 
         all {
             buildConfigField ("String", "OPEN_AI_KEY", "\"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\"")
+            buildConfigField ("String", "BASE_URL", "\"https://api.openai.com/v1/\"")
         }
 
         release {
