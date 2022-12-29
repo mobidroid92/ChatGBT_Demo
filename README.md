@@ -7,6 +7,7 @@ This Android app shows a demo of a chat with ChatGPT.
 * Ktor
 * Kotlinx-Serialization
 * Delegates
+* Typealias
 * Coroutines
 * Flow
 * Hilt

@@ -3,9 +3,9 @@ package com.example.chatgbtexample.presentation
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.widget.doOnTextChanged
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.chatgbtexample.common.base.BaseActivity
+import com.example.chatgbtexample.common.base.DoObserve
 import com.example.chatgbtexample.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -15,13 +15,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private val viewModel: MainActivityViewModel by viewModels()
     private lateinit var chatRecyclerAdapter: ChatRecyclerAdapter
 
-    override fun setup(savedInstanceState: Bundle?) {
-        setupViews()
-        listeners()
-        observers()
-    }
-
-    private fun setupViews() {
+    override fun setupViews(savedInstanceState: Bundle?) {
         setSupportActionBar(binding.toolbar)
         setupRecycler()
     }
@@ -34,7 +28,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     }
 
-    private fun listeners() {
+    override fun listeners() {
         binding.sendMsgBtn.setOnClickListener {
             viewModel.sendMsg()
             binding.msgToSendEditText.setText("")
@@ -44,21 +38,21 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
     }
 
-    private fun observers() {
-        lifecycleScope.launchWhenStarted {
-            viewModel.chatList.collect {
-                chatRecyclerAdapter.updateList(it) {
-                    if(it.isNotEmpty()) {
-                        binding.chatsRecyclerView.smoothScrollToPosition(it.lastIndex)
-                    }
-                }
-            }
-        }
-        lifecycleScope.launchWhenStarted {
-            viewModel.isSendButtonEnabled.collect {
-                binding.sendMsgBtn.isEnabled = it
-            }
-        }
+     override fun addObservers(observeList: MutableList<DoObserve>) {
+         observeList.add {
+             viewModel.chatList.collect {
+                 chatRecyclerAdapter.updateList(it) {
+                     if(it.isNotEmpty()) {
+                         binding.chatsRecyclerView.smoothScrollToPosition(it.lastIndex)
+                     }
+                 }
+             }
+         }
+         observeList.add {
+             viewModel.isSendButtonEnabled.collect {
+                 binding.sendMsgBtn.isEnabled = it
+             }
+         }
     }
 
 }
