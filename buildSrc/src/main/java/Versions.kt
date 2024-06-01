@@ -1,6 +1,6 @@
 object Versions {
 
-    const val HILT_ANDROID = "2.44.2"
-    const val KOTLIN = "1.7.20"
+    const val HILT_ANDROID = "2.51.1"
+    const val KOTLIN = "2.0.0"
 
 }
