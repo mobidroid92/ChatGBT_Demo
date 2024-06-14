@@ -57,7 +57,7 @@ dependencies {
     implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation ("androidx.recyclerview:recyclerview:1.3.2")
     implementation ("androidx.activity:activity-ktx:1.9.0")
-    implementation ("androidx.fragment:fragment-ktx:1.7.1")
+    implementation ("androidx.fragment:fragment-ktx:1.8.0")
 
     implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
 
@@ -76,7 +76,7 @@ dependencies {
     kapt ("com.google.dagger:hilt-compiler:${Versions.HILT_ANDROID}")
     kapt ("androidx.hilt:hilt-compiler:1.2.0")
 
-    val LIFECYCLE_VERSION = "2.8.1"
+    val LIFECYCLE_VERSION = "2.8.2"
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:$LIFECYCLE_VERSION")
     implementation ("androidx.lifecycle:lifecycle-runtime-ktx:$LIFECYCLE_VERSION")
     implementation ("androidx.lifecycle:lifecycle-common-java8:$LIFECYCLE_VERSION")
